@@ -1,65 +1,109 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { motion } from "framer-motion";
+import Head from "next/head";
+import Image from "next/image";
+import styled from "styled-components";
+
+const Container = styled.div`
+  height: 100vh;
+  background: yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3em;
+  overflow: hidden;
+`;
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  margin-bottom: 0.5em;
+`;
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <motion.div
+      animate={{ filter: "hue-rotate(360deg)" }}
+      transition={{
+        default: {
+          repeat: Infinity,
+          repeatType: "reverse",
+          duration: 20,
+        },
+      }}
+    >
+      <Container>
+        <Head>
+          <title>Kollektiv Kaorle</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
+        <Main>
+          <div
+            css={`
+              font-size: 2em;
+              @media (max-width: 600px) {
+                font-size: 1em;
+              }
+              font-weight: bold;
+              word-break: keep-all;
+            `}
           >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+            {"WELCOME TO KAORLE".split("").map((letter) => (
+              <span
+                css={`
+                  color: hsl(360, ${Math.random() * 100}%, 50%);
+                `}
+              >
+                {letter}
+              </span>
+            ))}
+          </div>
+          <ImageContainer>
+            <motion.div
+              animate={{ filter: "hue-rotate(360deg)" }}
+              whileHover={{ rotate: 360 }}
+              whileTap={{ scale: 0.5, rotate: 720 }}
+              transition={{
+                rotate: { type: "spring" },
+                scale: { type: "spring" },
+                default: {
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 10,
+                },
+              }}
+            >
+              <Image src="/logo.svg" width={500} height={500} />
+            </motion.div>
+          </ImageContainer>
+        </Main>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
+        <footer>
+          <motion.div
+            whileHover={{
+              scale: 1.5,
+            }}
           >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+            <a
+              css="background-color: pink; color: blue;"
+              href="https://instagram.com/kollektiv_kaorle"
+              target="_blank"
+            >
+              @kollektiv_kaorle
+            </a>
+          </motion.div>
+        </footer>
+      </Container>
+    </motion.div>
+  );
 }
