@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 const Container = styled.div`
   height: 100vh;
-  background: yellow;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,22 +21,56 @@ const Main = styled.main`
 `;
 
 const ImageContainer = styled.div`
+  z-index: 9999;
+  margin-top: -9vh;
+  padding: 0 6vw;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
   flex: 1;
-  margin-bottom: 0.5em;
+`;
+
+const FooterItem = styled(motion.div).attrs({
+  initial: {
+    color: "hsla(330, 99%, 80%, 1)",
+    background:
+      "linear-gradient(90deg, hsla(330, 99%, 80%, 0.15) 0%, hsla(28, 100%, 50%, 0.15) 100%)",
+  },
+  whileHover: {
+    scale: 1.15,
+    color: "hsla(58, 99%, 60%, 1)",
+    opacity: 1,
+    background:
+      "linear-gradient(60deg, hsla(330, 99%, 80%, 0.9) 0%, hsla(40, 100%, 50%, 0.9) 100%)",
+  },
+  transition: {
+    scale: { type: "spring", stiffness: 150 },
+  },
+})`
+  padding: 0 0.25em;
+  z-index: 9999;
 `;
 
 export default function Home() {
   return (
     <motion.div
-      animate={{ filter: "hue-rotate(360deg)" }}
+      animate={{
+        background: [
+          "linear-gradient(180deg, hsl(54, 99%, 56%) 0%, hsl(28, 100%, 50%) 100%)",
+          "linear-gradient(180deg, hsl(44, 99%, 56%) 0%, hsl(10, 100%, 50%) 100%)",
+        ],
+      }}
       transition={{
         default: {
           repeat: Infinity,
           repeatType: "reverse",
-          duration: 20,
+          duration: 10,
+          stiffness: 0,
         },
       }}
     >
@@ -48,7 +81,7 @@ export default function Home() {
         </Head>
 
         <Main>
-          <div
+          {/* <div
             css={`
               font-size: 2em;
               @media (max-width: 600px) {
@@ -61,18 +94,20 @@ export default function Home() {
             {"WELCOME TO KAORLE".split("").map((letter) => (
               <span
                 css={`
-                  color: hsl(360, ${Math.random() * 100}%, 50%);
+                  color: hsl(20, ${Math.random() * 100}%, 60%);
                 `}
               >
                 {letter}
               </span>
             ))}
-          </div>
+          </div> */}
           <ImageContainer>
             <motion.div
-              animate={{ filter: "hue-rotate(360deg)" }}
+              // animate={{ filter: "hue-rotate(360deg)" }}
+              animate={{ filter: ["hue-rotate(0deg)", "hue-rotate(-110deg)"] }}
               whileHover={{ rotate: 360 }}
-              whileTap={{ scale: 0.5, rotate: 720 }}
+              // whileTap={{ scale: 0.5, rotate: 720 }}
+              whileTap={{ rotate: 720 }}
               transition={{
                 rotate: { type: "spring" },
                 scale: { type: "spring" },
@@ -87,21 +122,105 @@ export default function Home() {
             </motion.div>
           </ImageContainer>
         </Main>
+        <div
+          css={`
+            bottom: -50px;
+            overflow: hidden;
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+          `}
+        >
+          <div
+            css={`
+              width: 100vw;
+              height: 100vh;
+              /* cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🦄</text></svg>")
+                  16 0,
+                auto; */
 
-        <footer>
-          <motion.div
-            whileHover={{
-              scale: 1.5,
-            }}
+              .ocean {
+                height: 15%;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background: #015871;
+              }
+
+              .wave {
+                background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg)
+                  repeat-x;
+                position: absolute;
+                top: -198px;
+                width: 6400px;
+                height: 198px;
+                animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+                transform: translate3d(0, 0, 0);
+              }
+
+              .wave:nth-of-type(2) {
+                top: -175px;
+                animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite,
+                  swell 7s ease -1.25s infinite;
+                opacity: 1;
+              }
+
+              @keyframes wave {
+                0% {
+                  margin-left: 0;
+                }
+                100% {
+                  margin-left: -1600px;
+                }
+              }
+
+              @keyframes swell {
+                0%,
+                100% {
+                  transform: translate3d(0, -25px, 0);
+                }
+                50% {
+                  transform: translate3d(0, 5px, 0);
+                }
+              }
+            `}
           >
-            <a
-              css="background-color: pink; color: blue;"
-              href="https://instagram.com/kollektiv_kaorle"
-              target="_blank"
-            >
+            <div class="ocean">
+              <div class="wave"></div>
+              <div class="wave"></div>
+            </div>
+          </div>
+        </div>
+
+        <footer
+          css={`
+            position: absolute;
+            bottom: 4.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            * {
+              margin: 0.15em;
+            }
+            z-index: 9999;
+          `}
+        >
+          <FooterItem>
+            <a href="https://instagram.com/kollektiv_kaorle" target="_blank">
               @kollektiv_kaorle
             </a>
-          </motion.div>
+          </FooterItem>
+          <FooterItem>
+            <a href="mailto:post@kollektiv-kaorle.at">
+              post@kollektiv-kaorle.at
+            </a>
+          </FooterItem>
+          <FooterItem>
+            <a href="https://goo.gl/maps/arid39WV6yVhccPm9" target="_blank">
+              Schmalzhofgasse 5/2, 1060 Wien
+            </a>
+          </FooterItem>
         </footer>
       </Container>
     </motion.div>
