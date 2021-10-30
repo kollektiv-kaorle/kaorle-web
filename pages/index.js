@@ -140,7 +140,7 @@ export default function Home() {
                 auto; */
 
               .ocean {
-                height: 15%;
+                height: 18%;
                 width: 100%;
                 position: absolute;
                 bottom: 0;
@@ -186,9 +186,9 @@ export default function Home() {
               }
             `}
           >
-            <div class="ocean">
-              <div class="wave"></div>
-              <div class="wave"></div>
+            <div className="ocean">
+              <div className="wave"></div>
+              <div className="wave"></div>
             </div>
           </div>
         </div>
@@ -196,7 +196,8 @@ export default function Home() {
         <footer
           css={`
             position: absolute;
-            bottom: 4.5rem;
+            /* bottom: 4.5rem; */
+            bottom: 1rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -221,6 +222,27 @@ export default function Home() {
               Schmalzhofgasse 5/2, 1060 Wien
             </a>
           </FooterItem>
+          <div
+            css={`
+              margin-top: 1rem;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              font-weight: 300;
+              font-size: 0.8rem;
+            `}
+          >
+            <div css="color: hsla(330, 99%, 80%, 0.4);">Supported by</div>
+            <Image
+              css={`
+                /* background-color: hsla(161, 50%, 50%, 0.2); */
+                margin-top: 0.5rem;
+              `}
+              src="/stadt-wien-kultur-logo.svg"
+              width={150}
+              height={40}
+            />
+          </div>
         </footer>
       </Container>
     </motion.div>
