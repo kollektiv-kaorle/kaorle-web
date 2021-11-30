@@ -56,14 +56,27 @@ const FooterItem = styled(motion.div).attrs({
   z-index: 9999;
 `;
 
+const BG_HUE_1 = 360;
+const BG_HUE_2 = 228;
+const BG_SAT_1 = 90;
+const BG_SAT_2 = 70;
+const BG_BRI_1 = 85;
+const BG_BRI_2 = 95;
+
 export default function Home() {
   return (
     <motion.div
       animate={{
         background: [
-          "linear-gradient(180deg, hsl(54, 99%, 56%) 0%, hsl(28, 100%, 50%) 100%)",
-          "linear-gradient(180deg, hsl(44, 99%, 56%) 0%, hsl(10, 100%, 50%) 100%)",
+          `linear-gradient(180deg, hsl(${BG_HUE_1}, ${BG_SAT_2}%, ${BG_BRI_1}%) 0%, hsl(${BG_HUE_2}, ${BG_SAT_2}%, ${BG_BRI_2}%) 100%)`,
+          `linear-gradient(180deg, hsl(${BG_HUE_1 - 20}, ${BG_SAT_1 - 40}%, ${
+            BG_BRI_1 - 20
+          }%) 0%, hsl(${BG_HUE_2 - 18}, ${BG_SAT_2}%, ${BG_BRI_2 + 2}%) 100%)`,
         ],
+        // background: [
+        //   "linear-gradient(180deg, hsl(54, 99%, 56%) 0%, hsl(28, 100%, 50%) 100%)",
+        //   "linear-gradient(180deg, hsl(44, 99%, 56%) 0%, hsl(10, 100%, 50%) 100%)",
+        // ],
       }}
       transition={{
         default: {
@@ -81,26 +94,6 @@ export default function Home() {
         </Head>
 
         <Main>
-          {/* <div
-            css={`
-              font-size: 2em;
-              @media (max-width: 600px) {
-                font-size: 1em;
-              }
-              font-weight: bold;
-              word-break: keep-all;
-            `}
-          >
-            {"WELCOME TO KAORLE".split("").map((letter) => (
-              <span
-                css={`
-                  color: hsl(20, ${Math.random() * 100}%, 60%);
-                `}
-              >
-                {letter}
-              </span>
-            ))}
-          </div> */}
           <ImageContainer>
             <motion.div
               // animate={{ filter: "hue-rotate(360deg)" }}
@@ -129,15 +122,25 @@ export default function Home() {
             position: relative;
             width: 100vw;
             height: 100vh;
+            animation: fade-in 3s linear;
+
+            @keyframes fade-in {
+              0% {
+                opacity: 0;
+              }
+              50% {
+                opacity: 0;
+              }
+              100% {
+                opacity: 1;
+              }
+            }
           `}
         >
           <div
             css={`
               width: 100vw;
               height: 100vh;
-              /* cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🦄</text></svg>")
-                  16 0,
-                auto; */
 
               .ocean {
                 height: 18%;
@@ -155,14 +158,17 @@ export default function Home() {
                 top: -198px;
                 width: 6400px;
                 height: 198px;
-                animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+                animation: wave 14s cubic-bezier(0.36, 0.45, 0.63, 0.53)
+                  infinite;
                 transform: translate3d(0, 0, 0);
               }
 
               .wave:nth-of-type(2) {
+                z-index: 10;
                 top: -175px;
-                animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite,
-                  swell 7s ease -1.25s infinite;
+                animation: wave 14s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s
+                    infinite,
+                  swell 14s ease -1.25s infinite;
                 opacity: 1;
               }
 
@@ -187,8 +193,52 @@ export default function Home() {
             `}
           >
             <div className="ocean">
-              <div className="wave"></div>
-              <div className="wave"></div>
+              <div className="wave" />
+              <div className="wave" />
+              <div
+                css={`
+                  z-index: 0;
+                  /* border: 1px solid blue; */
+                  position: absolute;
+                  width: 300px;
+                  height: 800px;
+                  top: -510px;
+
+                  animation: ship-x 14s cubic-bezier(0.36, 0.45, 0.63, 0.53) -3s
+                    infinite;
+
+                  // TODO use vw so it works for all display sizes
+                  @keyframes ship-x {
+                    0% {
+                      transform: translateX(1600px);
+                    }
+                    100% {
+                      transform: translateX(-400px);
+                    }
+                  }
+
+                  @keyframes ship-y {
+                    0% {
+                      transform: translateY(0px) rotate(-5deg);
+                    }
+                    50% {
+                      transform: translateY(45px) rotate(5deg);
+                    }
+                    100% {
+                      transform: translateY(0px) rotate(-5deg);
+                    }
+                  }
+                `}
+              >
+                <img
+                  css={`
+                    width: 300px;
+                    /* border: 1px solid red; */
+                    animation: ship-y 14s ease -2s infinite;
+                  `}
+                  src="/images/kat360.png"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -196,7 +246,6 @@ export default function Home() {
         <footer
           css={`
             position: absolute;
-            /* bottom: 4.5rem; */
             bottom: 1rem;
             display: flex;
             flex-direction: column;
