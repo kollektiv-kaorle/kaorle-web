@@ -257,6 +257,9 @@ export default function Home() {
           `}
         >
           <FooterItem>
+            <a href="https://eepurl.com/hJRrTb">Newsletter</a>
+          </FooterItem>
+          <FooterItem>
             <a href="https://instagram.com/kollektiv_kaorle" target="_blank">
               @kollektiv_kaorle
             </a>
