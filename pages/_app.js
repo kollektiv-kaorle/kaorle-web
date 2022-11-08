@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
 import GlobalStyles from "../components/global-styles";
 import jollyFlipDataUri from "../assets/jolly-flip-data-uri";
 import jollyFlipHighlightDataUri from "../assets/jolly-flip-highlight-data-uri";
@@ -29,6 +30,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <GlobalStyles />
       <Component {...pageProps} />
+      <Analytics />
     </div>
   );
 }
