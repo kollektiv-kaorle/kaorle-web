@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -257,7 +258,7 @@ export default function Home() {
           `}
         >
           <FooterItem>
-            <a href="https://eepurl.com/hJRrTb" target="_blank">
+            <a href="/newsletter" target="_blank">
               Newsletter
             </a>
           </FooterItem>
@@ -286,16 +287,27 @@ export default function Home() {
               font-size: 0.8rem;
             `}
           >
-            <div css="color: hsla(330, 99%, 80%, 0.4);">Supported by</div>
-            <Image
-              css={`
-                /* background-color: hsla(161, 50%, 50%, 0.2); */
-                margin-top: 0.5rem;
-              `}
-              src="/stadt-wien-kultur-logo.svg"
-              width={150}
-              height={40}
-            />
+            <div css="color: hsla(330, 99%, 80%, 0.4);">Gefördert durch</div>
+            <div>
+              <Image
+                css={`
+                  /* background-color: hsla(161, 50%, 50%, 0.2); */
+                  margin-top: 0.5rem;
+                `}
+                src="/stadt-wien-kultur-logo.svg"
+                width={150}
+                height={40}
+              />
+              <Image
+                css={`
+                  /* background-color: hsla(161, 50%, 50%, 0.2); */
+                  margin-top: 0.5rem;
+                `}
+                src="/shift-logo.png"
+                width={40}
+                height={40}
+              />
+            </div>
           </div>
         </footer>
       </Container>
