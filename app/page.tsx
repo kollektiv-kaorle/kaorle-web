@@ -1,7 +1,8 @@
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 const Page = () => {
-  redirect("/events");
+  // redirect("/events");
+  return null;
 };
 
 export default Page;
