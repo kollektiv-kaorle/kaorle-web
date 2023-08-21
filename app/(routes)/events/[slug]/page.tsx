@@ -6,48 +6,49 @@ import config from "@/app/_config";
 import { EventExportPayload } from "../_types";
 import getHours from "date-fns/getHours";
 import { differenceInDays, isSameMonth, subDays } from "date-fns";
-import { Metadata, ResolvingMetadata } from "next";
+// import { Metadata, ResolvingMetadata } from "next";
 
-export async function generateMetadata(
-  {
-    params,
-  }: {
-    params: { slug: string };
-  },
-  parent?: ResolvingMetadata
-): Promise<Metadata> {
-  const e = await getEvent(params.slug);
+// export async function generateMetadata(
+//   {
+//     params,
+//   }: {
+//     params: { slug: string };
+//   },
+//   parent?: ResolvingMetadata
+//   // ): Promise<Metadata> {
+// ) {
+//   const e = await getEvent(params.slug);
 
-  // optionally access and extend (rather than replace) parent metadata
-  const previousImages = (await parent)?.openGraph?.images || [];
+//   // optionally access and extend (rather than replace) parent metadata
+//   const previousImages = (await parent)?.openGraph?.images || [];
 
-  if (!e) {
-    return {
-      title: "Kollektiv Kaorle",
-      openGraph: {
-        images: previousImages,
-      },
-    };
-  }
+//   if (!e) {
+//     return {
+//       title: "Kollektiv Kaorle",
+//       openGraph: {
+//         images: previousImages,
+//       },
+//     } as Metadata;
+//   }
 
-  let doors = e.schedule?.find((s) => s.name === "Einlass")?.date;
-  doors = doors ? parseISO(doors) : undefined;
-  let start = parseISO(doors ?? e.start);
+//   let doors = e.schedule?.find((s) => s.name === "Einlass")?.date;
+//   doors = doors ? parseISO(doors) : undefined;
+//   let start = parseISO(doors ?? e.start);
 
-  const imageSrc =
-    e.shopEvent?.image?.sizes["640"] ?? e.images?.[0]?.sizes["640"];
-  const location =
-    e.locations?.map((l) => l.name).join(", ") ?? e.shopEvent?.location;
+//   const imageSrc =
+//     e.shopEvent?.image?.sizes["640"] ?? e.images?.[0]?.sizes["640"];
+//   const location =
+//     e.locations?.map((l) => l.name).join(", ") ?? e.shopEvent?.location;
 
-  return {
-    title: `${e.displayNames.title} · ${
-      location ? `${formatDe(start, "P")} @ ${location}` : ""
-    }`,
-    openGraph: {
-      images: imageSrc ? [imageSrc, ...previousImages] : previousImages,
-    },
-  };
-}
+//   return {
+//     title: `${e.displayNames.title} · ${
+//       location ? `${formatDe(start, "P")} @ ${location}` : ""
+//     }`,
+//     openGraph: {
+//       images: imageSrc ? [imageSrc, ...previousImages] : previousImages,
+//     },
+//   } as Metadata;
+// }
 
 async function getEvent(slug: string): Promise<EventExportPayload | undefined> {
   const res = await fetch(`${config.copilotBaseUrl}/event/${slug}`, {
