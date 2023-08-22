@@ -27,10 +27,10 @@ export default function RootLayout({
         className={`${inter.className} grid grid-cols-1 grid-rows-[auto_1fr_auto] min-h-screen`}
       >
         {/* <header className="flex justify-between sm:justify-end w-screen h-[230px] font-serif -mb-16"> */}
-        <header className="flex justify-end w-screen h-[230px] font-serif -mb-16">
+        <header className="flex justify-end w-screen h-[230px] font-serif lg:-mb-16">
           {/* <MobileNav className="sm:hidden block ml-8 mt-5 z-50" /> */}
           {/* <nav className="gap-5 mt-7 z-50 self-start hidden sm:flex"> */}
-          <nav className="gap-5 mt-7 z-50 self-start flex">
+          <nav className="mt-7 z-50 self-start flex flex-col gap-1 sm:flex-row sm:gap-5">
             {/* <InternalLink href="/venue">ort</InternalLink> */}
             <InternalLink href="/events">veranstaltungen</InternalLink>
             <InternalLink href="/about">das kollektiv</InternalLink>

@@ -30,7 +30,7 @@ const nav = {
     external: true,
   },
   contact: {
-    label: "contact",
+    label: "kontakt",
     href: "/contact",
   },
 };

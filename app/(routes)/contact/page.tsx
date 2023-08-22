@@ -2,7 +2,7 @@ import { ExternalLink } from "@/app/_components/link";
 
 export default function Page() {
   return (
-    <main className="mx-auto max-w-2xl">
+    <main className="mx-auto max-w-2xl px-5">
       <h1 className="font-bold italic text-2xl mb-8">Kontakt & Impressum</h1>
       <div className="flex flex-col gap-3">
         <div>
