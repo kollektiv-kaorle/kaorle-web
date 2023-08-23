@@ -131,10 +131,10 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
   const imageAlt = e.shopEvent?.image?.name ?? "";
 
   const description =
-    e.shopEvent?.description ??
     (e.eventInformations?.find((e) => e.name === "Info kurz")?.value as
       | string
       | undefined) ??
+    e.shopEvent?.description ??
     "";
 
   return (
