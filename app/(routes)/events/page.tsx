@@ -4,7 +4,13 @@ import { ExternalLink } from "@/app/_components/link";
 import { formatDe, parseISO } from "@/app/_utils/datetime";
 import Link from "next/link";
 import config from "@/app/_config";
-import { differenceInDays, getHours, isSameMonth, subDays } from "date-fns";
+import {
+  differenceInDays,
+  getHours,
+  isSameMonth,
+  isSameYear,
+  subDays,
+} from "date-fns";
 
 async function getEvents(): Promise<{
   data: EventExportPayload[];
@@ -16,7 +22,7 @@ async function getEvents(): Promise<{
   };
 }> {
   const res = await fetch(
-    `${config.copilotBaseUrl}/events?filter.promotionType=kaorle-web`,
+    `${config.copilotBaseUrl}/events?filter.promotionType=kaorle-web&pagination.skip=0&pagination.take=100&filter.date.startDayOffset=0&filter.date.kind=relativeRange`,
     {
       headers: {
         Authorization: `Bearer ${config.copilotApiToken}`,
@@ -65,6 +71,11 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
           adjustedEndDate,
           "dd.MM.yyyy"
         )}`;
+      } else if (isSameYear(start, adjustedEndDate)) {
+        formattedDate = `${formatDe(start, "dd.MM.")} - ${formatDe(
+          adjustedEndDate,
+          "dd.MM.yyyy"
+        )}`;
       } else {
         formattedDate = `${formatDe(start, "E P")} - ${formatDe(
           adjustedEndDate,
@@ -72,15 +83,12 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
         )}`;
       }
     }
-    // else {
-    //   formattedDate = `${formatDe(start, "E Pp")} - ${formatDe(end, "p")}`;
-    // }
   }
 
   const title = e.shopEvent?.name ?? e.name;
   const subTitle = e.shopEvent?.subTitle ?? e.subTitle;
   const location =
-    e.locations?.map((l) => l.name).join(", ") ?? e.shopEvent?.location;
+    e.locations?.map((l) => l.name).join(" & ") ?? e.shopEvent?.location;
   const shopUrl = e.shopEvent?.url;
   const shopLink = shopUrl
     ? {
@@ -104,8 +112,9 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
           </Link>
         </div>
         <div>
-          <div className="mt-1">
-            {formattedDate} @ {location}
+          <div className="mt-1 flex gap-x-1 flex-wrap">
+            <div>{formattedDate}</div>
+            <div>@ {location}</div>
           </div>
           <h2 className="underline decoration-red-300 hover:decoration-inherit underline-offset-4 font-bold mt-1">
             <Link href={detailHref}>{title}</Link>

@@ -5,7 +5,7 @@ import md from "@/app/_utils/markdown-it";
 import config from "@/app/_config";
 import { EventExportPayload } from "../_types";
 import getHours from "date-fns/getHours";
-import { differenceInDays, isSameMonth, subDays } from "date-fns";
+import { differenceInDays, isSameMonth, isSameYear, subDays } from "date-fns";
 // import { Metadata, ResolvingMetadata } from "next";
 
 // export async function generateMetadata(
@@ -97,6 +97,11 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
           adjustedEndDate,
           "dd.MM.yyyy"
         )}`;
+      } else if (isSameYear(start, adjustedEndDate)) {
+        formattedDate = `${formatDe(start, "dd.MM.")} - ${formatDe(
+          adjustedEndDate,
+          "dd.MM.yyyy"
+        )}`;
       } else {
         formattedDate = `${formatDe(start, "E P")} - ${formatDe(
           adjustedEndDate,
@@ -111,7 +116,7 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
   const title = e.shopEvent?.name ?? e.name;
   const subTitle = e.shopEvent?.subTitle ?? e.subTitle;
   const location =
-    e.locations?.map((l) => l.name).join(", ") ?? e.shopEvent?.location;
+    e.locations?.map((l) => l.name).join(" & ") ?? e.shopEvent?.location;
   const shopUrl = e.shopEvent?.url;
   const shopLink = shopUrl
     ? {
@@ -145,8 +150,9 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
         )}
       </div>
       <div>
-        <div className="mt-1">
-          {formattedDate} @ {location}
+        <div className="mt-1 flex gap-x-1 flex-wrap">
+          <div>{formattedDate}</div>
+          <div>@ {location}</div>
         </div>
         <h2 className="underline underline-offset-4 font-bold mt-1">{title}</h2>
         {subTitle && <div>{subTitle}</div>}
