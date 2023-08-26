@@ -10,6 +10,7 @@ import {
   intlFormatDistance,
   parseISO as _parseISO,
 } from "date-fns";
+import { formatInTimeZone } from "date-fns-tz";
 import { startOfWeekWithOptions, getWeekWithOptions } from "date-fns/fp";
 import { de } from "date-fns/locale";
 
@@ -39,9 +40,9 @@ export function parseISO(
 export function formatDe(
   date: number | Date,
   formatString: string,
-  options?: Parameters<typeof format>[2]
+  options?: Parameters<typeof formatInTimeZone>[3]
 ) {
-  return format(parseIfString(date), formatString, {
+  return formatInTimeZone(parseIfString(date), "Europe/Berlin", formatString, {
     locale: de,
     ...options,
   });

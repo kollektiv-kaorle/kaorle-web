@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 
 // const classNames = "italic hover:underline underline-offset-4";
 const classNames =
-  "underline underline-offset-2 decoration-red-200 hover:decoration-inherit";
+  "underline underline-offset-2 decoration-red-200 hover:decoration-inherit decoration-1";
 
 type LinkProps = {
   href: string;

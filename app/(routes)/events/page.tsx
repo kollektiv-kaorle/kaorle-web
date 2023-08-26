@@ -116,7 +116,7 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
             <div>{formattedDate}</div>
             <div>@ {location}</div>
           </div>
-          <h2 className="underline decoration-red-300 hover:decoration-inherit underline-offset-4 font-bold mt-1">
+          <h2 className="underline decoration-red-300 decoration-1 hover:decoration-inherit underline-offset-4 font-bold mt-1">
             <Link href={detailHref}>{title}</Link>
           </h2>
           {subTitle && <div>{subTitle}</div>}
