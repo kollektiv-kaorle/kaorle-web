@@ -51,7 +51,7 @@ export default function RootLayout({
         <footer className="mt-16">
           <div className="w-screen overflow-hidden relative h-64">
             <Sailor />
-            <div className="w-[2500px] absolute bottom-0">
+            <div className="w-[2500px] absolute bottom-0 -left-3">
               <Image
                 src="/images/welle.svg"
                 alt="Welle"
