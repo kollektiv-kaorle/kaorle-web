@@ -173,7 +173,7 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
         )}
 
         <div
-          className="prose-sm mt-5 text-justify prose-a:underline prose-a:underline-offset-2 prose-a:decoration-red-200 hover:prose-a:decoration-inherit prose-hr:border-red-300 prose-hr:my-4"
+          className="prose-h3:mt-4 prose-h3:text-sm prose-p:my-2 prose-p:leading-normal prose-h3:font-semibold prose-sm mt-5 text-justify prose-a:underline prose-a:underline-offset-2 prose-a:decoration-red-200 hover:prose-a:decoration-inherit prose-hr:border-red-300 prose-hr:my-4"
           dangerouslySetInnerHTML={{ __html: md.render(description) }}
         />
       </div>
