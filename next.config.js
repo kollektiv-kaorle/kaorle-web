@@ -17,6 +17,11 @@ const nextConfig = {
         destination: "/events/762568eb-87a1-4681-be37-f1cdc1cf4b95",
         permanent: true,
       },
+      {
+        source: "/takeshis-cashew",
+        destination: "/events/c37b709d-ab1e-464c-9e87-6e99f6d1544d",
+        permanent: true,
+      },
     ];
   },
   images: {
