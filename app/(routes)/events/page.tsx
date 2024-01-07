@@ -11,6 +11,7 @@ import {
   isSameYear,
   subDays,
 } from "date-fns";
+import { trackEvent } from "fathom-client";
 
 async function getEvents(): Promise<{
   data: EventExportPayload[];
@@ -125,6 +126,11 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
               <ExternalLink
                 href={shopLink.href}
                 className="text-sm no-underline hover:text-white border border-[#ff1922] hover:bg-[#ff1922] px-2 py-0.5 hover:no-underline"
+                onClick={() =>
+                  trackEvent("ticket link click", {
+                    _value: title as any,
+                  })
+                }
               >
                 → {shopLink.label}
               </ExternalLink>

@@ -6,6 +6,7 @@ import config from "@/app/_config";
 import { EventExportPayload } from "../_types";
 import getHours from "date-fns/getHours";
 import { differenceInDays, isSameMonth, isSameYear, subDays } from "date-fns";
+import { trackEvent } from "fathom-client";
 // import { Metadata, ResolvingMetadata } from "next";
 
 // export async function generateMetadata(
@@ -161,6 +162,11 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
             <ExternalLink
               href={shopLink.href}
               className="no-underline hover:text-white border border-[#ff1922] hover:bg-[#ff1922] px-2 py-0.5 hover:no-underline"
+              onClick={() =>
+                trackEvent("ticket link click", {
+                  _value: title as any,
+                })
+              }
             >
               → {shopLink.label}
             </ExternalLink>
