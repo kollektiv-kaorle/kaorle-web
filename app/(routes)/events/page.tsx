@@ -40,7 +40,7 @@ const Page = async () => {
       <h1 className="font-bold italic text-2xl mb-8">Veranstaltungen</h1>
       <div className="flex flex-col gap-9 md:gap-7">
         {events.data.length ? (
-          events.data.map((e) => <Item event={e} />)
+          events.data.map((e) => <Item event={e} key={e.id} />)
         ) : (
           <div>Es gibt momentan keine zukünftigen Veranstaltungen.</div>
         )}
