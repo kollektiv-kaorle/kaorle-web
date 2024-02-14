@@ -156,6 +156,7 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
           <div>@ {location}</div>
         </div>
         <h2 className="underline underline-offset-4 font-bold mt-1">{title}</h2>
+        {/* <pre>{JSON.stringify(e.shopEvent, null, 2)}</pre> */}
         {subTitle && <div>{subTitle}</div>}
         {shopLink && (
           <div className="mt-4">

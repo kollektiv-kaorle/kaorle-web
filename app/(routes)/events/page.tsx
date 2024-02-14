@@ -120,6 +120,7 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
           <h2 className="underline decoration-red-300 decoration-1 hover:decoration-inherit underline-offset-4 font-bold mt-1">
             <Link href={detailHref}>{title}</Link>
           </h2>
+          {/* <pre>{JSON.stringify(e.shopEvent, null, 2)}</pre> */}
           {subTitle && <div>{subTitle}</div>}
           {shopLink && (
             <div className="mt-4">

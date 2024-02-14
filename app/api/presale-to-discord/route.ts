@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
 
   const copilotResponseJson = await copilotResponse.json();
 
-  console.log("response", copilotResponseJson);
+  // console.log("response", copilotResponseJson);
 
   const message = copilotResponseJson.data
     .filter((e: EventExportPayload) => e.ticketing?.length)
