@@ -147,7 +147,21 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
     <div className="grid grid-cols-1 xl:grid-cols-[350px_1fr] xl:gap-8 gap-5">
       <div>
         {imageSrc && (
-          <Image src={imageSrc} alt={imageAlt} width={400} height={400} />
+          <>
+            <img
+              src={imageSrc.replace("quality=50", "quality=100")}
+              alt={imageAlt}
+              width={600}
+              height={400}
+            ></img>
+            {/* <Image
+              src={imageSrc}
+              alt={imageAlt}
+              width={800}
+              height={800}
+              quality={100}
+            /> */}
+          </>
         )}
       </div>
       <div>

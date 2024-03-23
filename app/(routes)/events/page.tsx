@@ -108,7 +108,12 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
         <div className="relative">
           <Link href={detailHref} tabIndex={-1}>
             {imageSrc && (
-              <Image src={imageSrc} alt={imageAlt} width={300} height={300} />
+              <Image
+                src={imageSrc.replace("quality=50", "quality=100")}
+                alt={imageAlt}
+                width={300}
+                height={300}
+              />
             )}
           </Link>
         </div>
