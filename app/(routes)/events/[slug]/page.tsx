@@ -118,7 +118,11 @@ const Item: React.FC<{ event: EventExportPayload }> = (props) => {
   const subTitle = e.shopEvent?.subTitle ?? e.subTitle;
   const location =
     e.locations?.map((l) => l.name).join(" & ") ?? e.shopEvent?.location;
-  const shopUrl = e.shopEvent?.url;
+  const shopUrl =
+    e.shopEvent?.url ??
+    (e.eventInformations?.find((e) => e.name === "Ticketlink")?.value as
+      | string
+      | undefined);
   const shopLink = shopUrl
     ? {
         label: "Tickets",

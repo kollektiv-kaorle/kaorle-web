@@ -22,6 +22,11 @@ const nextConfig = {
         destination: "/events/c37b709d-ab1e-464c-9e87-6e99f6d1544d",
         permanent: true,
       },
+      {
+        source: "/das-kinn",
+        destination: "/events/a4a5abc3-377d-4f39-9452-3758f5c3baee",
+        permanent: true,
+      },
     ];
   },
   images: {
