@@ -27,6 +27,11 @@ const nextConfig = {
         destination: "/events/a4a5abc3-377d-4f39-9452-3758f5c3baee",
         permanent: true,
       },
+      {
+        source: "/umami-joon",
+        destination: "/events/eaa527fe-b74a-4c3c-bac3-c306d2bc9a36",
+        permanent: true,
+      },
     ];
   },
   images: {
