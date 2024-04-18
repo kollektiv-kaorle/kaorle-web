@@ -12,7 +12,7 @@ const FooterContent: React.FC = () => {
     // initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
     // style={{ height: 20 }}
     >
-      <div className="grid place-items-center md:grid-cols-[auto_1fr_auto] font-serif pb-6 px-8 w-screen bg-white gap-5">
+      <div className="grid place-items-center xl:grid-cols-[1fr_1fr_1fr] font-serif pb-6 px-8 w-screen bg-white gap-5">
         <div className="flex gap-2 flex-col items-center md:items-start order-3 md:order-1">
           <div>gefördert durch</div>
           <div className="flex">
@@ -22,12 +22,31 @@ const FooterContent: React.FC = () => {
               width={150}
               height={40}
             />
-            <a href="https://shift.wien/projekte/paradiesl-motor-fuer-eine-ko-produzierte-stadt/">
+            <div className="relative w-20 mx-2">
+              <Image
+                src="/images/dlkulturlogo-ottakring.jpg"
+                alt="Kulturlogo des Bezirks Ottakring"
+                fill
+                objectFit="contain"
+              />
+            </div>
+            <a href="https://basiskultur.at" className="relative w-16 mx-3">
+              <Image
+                src="/images/basiskultur-logo.png"
+                alt="Logo von Basiskultur Wien"
+                fill
+                objectFit="contain"
+              />
+            </a>
+            <a
+              className="relative w-20"
+              href="https://shift.wien/projekte/paradiesl-motor-fuer-eine-ko-produzierte-stadt/"
+            >
               <Image
                 src="/images/shift-logo.png"
                 alt="Logo von BasisKultur SHIFT"
-                width={40}
-                height={40}
+                fill
+                objectFit="contain"
               />
             </a>
           </div>
@@ -40,7 +59,7 @@ const FooterContent: React.FC = () => {
             zum newsletter anmelden
           </InternalLink>
         </div>
-        <div className="flex flex-col gap-0 md:text-right text-center order-2 md:order-3">
+        <div className="flex flex-col gap-0 xl:text-right text-center order-2 xl:order-3 w-full">
           <ExternalLink href={nav.instagram.href}>
             {nav.instagram.label}
           </ExternalLink>
