@@ -32,6 +32,11 @@ const nextConfig = {
         destination: "/events/eaa527fe-b74a-4c3c-bac3-c306d2bc9a36",
         permanent: true,
       },
+      {
+        source: "/john-moods",
+        destination: "/events/d7da196f-d007-4f31-9bd4-a449326dde61",
+        permanent: true,
+      },
     ];
   },
   images: {
